@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cover Page Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="bg-shapes">
+        <div class="bg-shape bg-shape1"></div>
+        <div class="bg-shape bg-shape2"></div>
+        <div class="bg-shape bg-shape3"></div>
+        <div class="bg-shape bg-shape4"></div>
+    </div>
+    <header class="main-header">
+        <h1><span class="logo-gradient">AI Cover Page Generator</span></h1>
+        <p class="subtitle">Create stunning book or album covers with AI in seconds!</p>
+        <button id="dark-mode-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <span class="icon-moon">🌙</span>
+            <span class="icon-sun" style="display:none;">☀️</span>
+        </button>
+    </header>
+    <main class="container" aria-label="AI Cover Page Generator">
+        <div class="decorative-bar"></div>
+        <form id="cover-form" autocomplete="off" aria-label="Cover generation form">
+            <div class="form-group icon-input">
+                <span class="input-icon"> <!-- Book SVG -->
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="#6366f1" stroke-width="1.5"/><rect x="4" y="4" width="16" height="16" rx="2" stroke="#a21caf" stroke-width="1.5"/></svg>
+                </span>
+                <input type="text" id="title" name="title" required placeholder=" " />
+                <span class="floating-label">Title*</span>
+            </div>
+            <div class="form-group icon-input">
+                <span class="input-icon"> <!-- Pencil SVG -->
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M16.475 5.408a2.5 2.5 0 0 1 3.536 3.535l-9.192 9.192a2 2 0 0 1-.707.464l-4.243 1.414 1.414-4.243a2 2 0 0 1 .464-.707l9.192-9.192Z" stroke="#a21caf" stroke-width="1.5"/></svg>
+                </span>
+                <input type="text" id="subtitle" name="subtitle" placeholder=" " />
+                <span class="floating-label">Subtitle</span>
+            </div>
+            <div class="form-group icon-input">
+                <div class="field-title">Genre</div>
+                <span class="input-icon"> <!-- Mask SVG -->
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8-8-3.582-8-8Z" stroke="#6366f1" stroke-width="1.5"/><path d="M9 10h.01M15 10h.01M12 15c-1.657 0-3-1.343-3-3" stroke="#a21caf" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <select id="genre" name="genre">
+                    <option value="">Select Genre</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Science Fiction">Science Fiction</option>
+                    <option value="Mystery">Mystery</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Literary Fiction">Literary Fiction</option>
+                    <option value="Historical Fiction">Historical Fiction</option>
+                    <option value="Contemporary">Contemporary</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Crime">Crime</option>
+                    <option value="Non-fiction">Non-fiction</option>
+                    <option value="Biography">Biography</option>
+                    <option value="Self-help">Self-help</option>
+                    <option value="Poetry">Poetry</option>
+                    <option value="Children's">Children's</option>
+                    <option value="Young Adult">Young Adult</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                </select>
+            </div>
+            <div class="form-group icon-input">
+                <div class="field-title">Mood</div>
+                <span class="input-icon"> <!-- Palette SVG -->
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke="#6366f1" stroke-width="1.5"/><circle cx="9" cy="10" r="1" fill="#a21caf"/><circle cx="15" cy="10" r="1" fill="#a21caf"/><circle cx="12" cy="15" r="1" fill="#a21caf"/></svg>
+                </span>
+                <select id="mood" name="mood">
+                    <option value="">Select Mood</option>
+                    <option value="Happy">Happy</option>
+                    <option value="Dark">Dark</option>
+                    <option value="Romantic">Romantic</option>
+                    <option value="Epic">Epic</option>
+                    <option value="Mysterious">Mysterious</option>
+                    <option value="Energetic">Energetic</option>
+                    <option value="Melancholic">Melancholic</option>
+                    <option value="Uplifting">Uplifting</option>
+                    <option value="Calm">Calm</option>
+                    <option value="Inspiring">Inspiring</option>
+                    <option value="Whimsical">Whimsical</option>
+                    <option value="Nostalgic">Nostalgic</option>
+                    <option value="Ethereal">Ethereal</option>
+                    <option value="Dramatic">Dramatic</option>
+                    <option value="Peaceful">Peaceful</option>
+                    <option value="Intense">Intense</option>
+                    <option value="Playful">Playful</option>
+                    <option value="Serene">Serene</option>
+                </select>
+            </div>
+            <div class="form-group icon-input">
+                <div class="field-title">Format</div>
+                <span class="input-icon"> <!-- CD SVG -->
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke="#6366f1" stroke-width="1.5"/><circle cx="12" cy="12" r="2" stroke="#a21caf" stroke-width="1.5"/></svg>
+                </span>
+                <select id="format" name="format">
+                    <option value="">Select Format</option>
+                    <option value="book">Book Cover</option>
+                    <option value="album">Album Cover</option>
+                    <option value="ebook">E-Book Cover</option>
+                    <option value="audiobook">Audiobook Cover</option>
+                    <option value="magazine">Magazine Cover</option>
+                    <option value="comic">Comic Book Cover</option>
+                </select>
+            </div>
+            <div class="form-group icon-input">
+                <div class="field-title">Style</div>
+                <span class="input-icon"> <!-- Brush SVG -->
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M17.657 6.343a8 8 0 0 1-11.314 11.314l11.314-11.314Z" stroke="#6366f1" stroke-width="1.5"/><path d="M6.343 17.657a8 8 0 0 1 11.314-11.314L6.343 17.657Z" stroke="#a21caf" stroke-width="1.5"/></svg>
+                </span>
+                <select id="style" name="style">
+                    <option value="">Select Style</option>
+                    <option value="Minimalist">Minimalist</option>
+                    <option value="Vintage">Vintage</option>
+                    <option value="Modern">Modern</option>
+                    <option value="Abstract">Abstract</option>
+                    <option value="Photorealistic">Photorealistic</option>
+                    <option value="Watercolor">Watercolor</option>
+                    <option value="Pop Art">Pop Art</option>
+                    <option value="Digital Art">Digital Art</option>
+                    <option value="3D Rendered">3D Rendered</option>
+                    <option value="Hand Drawn">Hand Drawn</option>
+                    <option value="Retro">Retro</option>
+                    <option value="Geometric">Geometric</option>
+                    <option value="Typography">Typography</option>
+                    <option value="Surreal">Surreal</option>
+                    <option value="Collage">Collage</option>
+                    <option value="Grunge">Grunge</option>
+                    <option value="Art Nouveau">Art Nouveau</option>
+                    <option value="Art Deco">Art Deco</option>
+                </select>
+            </div>
+            <div class="form-group icon-input">
+                <span class="input-icon"> <!-- Ban SVG -->
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke="#a21caf" stroke-width="1.5"/><path d="M7 7l10 10" stroke="#6366f1" stroke-width="1.5"/></svg>
+                </span>
+                <input type="text" id="negative" name="negative" placeholder=" " />
+                <span class="floating-label">Negative Prompt</span>
+            </div>
+            <div class="form-group icon-input">
+                <div class="field-title">Image Size</div>
+                <span class="input-icon"> <!-- Ruler SVG -->
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="8" rx="2" stroke="#6366f1" stroke-width="1.5"/><path d="M8 8v8M12 8v8M16 8v8" stroke="#a21caf" stroke-width="1.5"/></svg>
+                </span>
+                <select id="size" name="size">
+                    <option value="">Select Size</option>
+                    <option value="1024x1024">Square (1024x1024) - Standard</option>
+                    <option value="1024x1536">Portrait (1024x1536) - Book Cover</option>
+                    <option value="1536x1024">Landscape (1536x1024) - Wide Format</option>
+                    <option value="1152x1152">Large Square (1152x1152)</option>
+                    <option value="1280x1920">Tall Portrait (1280x1920)</option>
+                    <option value="1920x1280">Wide Landscape (1920x1280)</option>
+                </select>
+            </div>
+            <div class="form-group icon-input">
+                <div class="field-title">Number of Variations</div>
+                <span class="input-icon"> <!-- Hash SVG -->
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M7 9h10M7 15h10M9 7v10M15 7v10" stroke="#6366f1" stroke-width="1.5"/></svg>
+                </span>
+                <select id="variations" name="variations">
+                    <option value="">Select Number</option>
+                    <option value="1">1 Variation</option>
+                    <option value="2">2 Variations</option>
+                    <option value="3">3 Variations</option>
+                    <option value="4">4 Variations</option>
+                    <option value="5">5 Variations</option>
+                    <option value="6">6 Variations</option>
+                </select>
+            </div>
+            <button type="submit" id="generate-btn"><span class="btn-icon">✨</span> Generate Cover</button>
+            <button type="button" id="regenerate-btn" style="display:none;"><span class="btn-icon">🔄</span> Regenerate</button>
+        </form>
+        <div class="actions-row">
+            <button type="button" id="copy-prompt-btn" style="display:none;"><span class="btn-icon">📋</span> Copy Prompt</button>
+            <button type="button" id="download-all-btn" style="display:none;"><span class="btn-icon">⬇️</span> Download All as ZIP</button>
+        </div>
+        <div id="loading" class="loading" aria-live="polite" style="display:none;">
+            <span class="spinner"></span> Generating image(s)...
+        </div>
+        <div id="error" class="error" role="alert"></div>
+        <section id="result" class="result" aria-label="Generated covers">
+            <!-- Images and download buttons will be inserted here -->
+        </section>
+        <section id="history" class="history-bar" aria-label="History of generated covers" style="display:none;">
+            <h2>History</h2>
+            <div id="history-list" class="history-list"></div>
+        </section>
+    </main>
+    <div id="modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <button id="modal-close" class="modal-close" aria-label="Close preview">&times;</button>
+            <img id="modal-img" src="" alt="Preview" />
+        </div>
+    </div>
+    <footer class="main-footer">
+        <p>Made with <span style="color:#f87171">♥</span> using Stability AI &amp; Flask | <a href="https://stability.ai/" target="_blank" rel="noopener">Stability AI</a></p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
